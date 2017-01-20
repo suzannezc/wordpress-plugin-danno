@@ -51,7 +51,39 @@ class Danno_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+	}
 
+	public function admin_menu() {
+		add_menu_page( 'Bookings', 'Bookings', 'administrator', 'danno-menu', array( $this, 'danno_menu' ));
+		add_submenu_page( 'danno-menu', 'Resources', 'Resources', 'administrator', 'danno-resources', array( $this, 'resources_menu' ));
+		add_submenu_page( 'danno-menu', 'Resource Types', 'Resource Types', 'administrator', 'danno-resource-cats', array( $this, 'resource_cats_menu' ));
+		add_submenu_page( 'danno-menu', 'Services', 'Services', 'administrator', 'danno-services', array( $this, 'services_menu' ));
+	}
+
+	public function danno_menu() {
+		echo '<div class="wrap">';
+		echo '<h1 class="wp-heading-inline">Bookings</h1>';
+		echo '<p>3-month date picker here</p>';
+		echo '</div>';
+	}
+
+	public function resources_menu() {
+		echo '<div class="wrap">';
+		echo '<h1 class="wp-heading-inline">Resources</h1>';
+		echo '</div>';
+	}
+
+	public function resource_cats_menu() {
+		echo '<div class="wrap">';
+		echo '<h1 class="wp-heading-inline">Resource Types</h1>';
+		echo '</div>';
+	}
+
+	public function services_menu() {
+		echo '<div class="wrap">';
+		echo '<h1 class="wp-heading-inline">Services</h1>';
+		echo '</div>';
 	}
 
 	/**
